@@ -2,8 +2,11 @@
 
 window.createDemoI18n = function () {
   const storageKey = 'onset-demo-language';
-  let language = 'zh';
-  try { if (localStorage.getItem(storageKey) === 'en') language = 'en'; } catch { /* Storage is optional for local previews. */ }
+  let language = 'en';
+  try {
+    const savedLanguage = localStorage.getItem(storageKey);
+    if (savedLanguage === 'zh' || savedLanguage === 'en') language = savedLanguage;
+  } catch { /* Storage is optional for local previews. */ }
 
   const en = {
     'ONSET · 网页演示': 'ONSET · Web demo',

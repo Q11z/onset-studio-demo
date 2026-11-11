@@ -2,7 +2,7 @@
 
 [Open the live demo](https://q11z.github.io/onset-studio-demo/)
 
-A browser demo of the ONSET fitness studio mini program, with Simplified Chinese and English interfaces.
+A browser demo of the ONSET fitness studio mini program, with English as the default language and a Simplified Chinese option. Your language selection is remembered in your browser.
 
 ## Try the workflow
 
