@@ -1,0 +1,80 @@
+html, body { margin: 0; min-height: 100%; }
+body { background: #202020; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+[hidden] { display: none !important; }
+.preview { margin: 0 auto; width: min(100%, 414px); }
+.preview-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 4px; color: #c8c8c8; font-size: 12px; }
+.preview-controls { display: flex; align-items: center; gap: 8px; }
+.preview-controls select { font: inherit; color: #eee; background: #292929; border: 1px solid #575757; border-radius: 5px; padding: 5px 6px; }
+.preview-toolbar button { padding: 5px 9px; border: 1px solid #575757; border-radius: 5px; background: #292929; color: #eee; cursor: pointer; }
+.phone { --wx-rpx: calc(min(100vw, 414px) / 750); --wx-vh: 1dvh; display: grid; grid-template-rows: 44px minmax(0, 1fr) auto; height: min(880px, calc(100dvh - 64px)); min-height: 240px; overflow: hidden; border-radius: 10px; background: #000; box-shadow: 0 0 0 1px #4b4b4b; }
+.wx-header { position: relative; display: grid; place-items: center; min-width: 0; font-size: 17px; font-weight: 600; }
+.wx-back, .wx-menu { position: absolute; top: 0; bottom: 0; margin: auto 0; cursor: pointer; color: inherit; background: transparent; }
+.wx-back { left: 7px; width: 33px; height: 32px; border: 0; display: grid; place-items: center; }
+.wx-back span { width: 9px; height: 9px; border-left: 2px solid; border-bottom: 2px solid; transform: rotate(45deg); }
+.wx-menu { right: 8px; display: flex; align-items: center; justify-content: space-evenly; width: 76px; height: 31px; padding: 0; border: 1px solid #8885; border-radius: 17px; }
+.wx-dots { width: 4px; height: 4px; border-radius: 50%; background: currentColor; box-shadow: -6px 0 0 -0.5px currentColor, 6px 0 0 -0.5px currentColor; }
+.wx-circle { width: 11px; height: 11px; border: 1.5px solid; border-radius: 50%; }
+.wx-viewport { position: relative; contain: layout; isolation: isolate; overflow: hidden; min-height: 0; }
+.wx-content { height: 100%; overflow: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.wx-tabs { display: flex; box-sizing: border-box; min-height: 49px; padding-bottom: env(safe-area-inset-bottom, 0px); border-top: 1px solid #ddd; }
+.wx-tabs button { flex: 1; min-width: 0; min-height: 48px; padding: 0; border: 0; background: none; font: inherit; font-size: 12px; cursor: pointer; }
+
+/* Browser defaults for the mini program elements. Page styles come from WXSS. */
+wx-page { display: block; min-height: 100%; font-size: 16px; line-height: normal; }
+wx-view, wx-scroll-view, wx-picker, wx-checkbox-group { display: block; }
+wx-text { display: inline; }
+wx-page img { display: inline-block; width: 320px; height: 240px; vertical-align: middle; }
+wx-page img[data-mode="aspectFill"] { object-fit: cover; }
+wx-page img[data-mode="aspectFit"] { object-fit: contain; }
+wx-page img[data-mode="widthFix"] { height: auto; }
+wx-page img[data-mode="heightFix"] { width: auto; }
+wx-page wx-scroll-view[data-scroll-x="true"] { overflow-x: auto; }
+wx-page wx-scroll-view[data-scroll-y="true"] { overflow-y: auto; }
+wx-page wx-scroll-view { scrollbar-width: none; overscroll-behavior: contain; }
+wx-page [data-tap], wx-page wx-picker, wx-page button { cursor: pointer; }
+wx-page button, wx-page input, wx-page textarea { font: inherit; color: inherit; }
+wx-page button { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+:where(wx-page input:not([type="checkbox"]), wx-page textarea) { display: block; padding: 0; border: 0; border-radius: 0; min-width: 0; background: transparent; }
+wx-page input::placeholder, wx-page textarea::placeholder { color: #808080; opacity: 1; }
+wx-page input[data-placeholder="ph-color"]::placeholder, wx-page textarea[data-placeholder="ph-color"]::placeholder { color: #666; }
+wx-page input[type="checkbox"] { accent-color: #f29100; margin: 0 5px 0 0; width: 20px; height: 20px; vertical-align: middle; }
+wx-page canvas { display: block; width: 300px; height: 150px; touch-action: none; }
+wx-page wx-icon { display: inline-flex; vertical-align: middle; }
+
+.wx-overlay { position: absolute; inset: 0; z-index: 2000; display: grid; place-items: center; background: #0009; }
+.wx-modal { width: min(320px, calc(100% - 48px)); border-radius: 12px; overflow: hidden; background: #fff; color: #111; text-align: center; }
+.wx-modal h2 { margin: 24px 16px 10px; font-size: 17px; }
+.wx-modal p { margin: 0; padding: 0 20px 20px; color: #555; font-size: 15px; overflow-wrap: anywhere; }
+.wx-modal input, .wx-modal select { box-sizing: border-box; width: calc(100% - 40px); margin: 0 20px 16px; border: 1px solid #d7d7d7; border-radius: 4px; padding: 8px; font: inherit; }
+.wx-modal img { display: block; max-width: 100%; max-height: 55vh; margin: 0 auto 14px; object-fit: contain; }
+.wx-modal-actions { display: flex; border-top: 1px solid #ececec; }
+.wx-modal-actions button { flex: 1; min-height: 49px; background: transparent; border: 0; color: #111; font: inherit; cursor: pointer; }
+.wx-modal-actions button + button { border-left: 1px solid #ececec; }
+.wx-modal-actions button[type="submit"] { color: #18834f; font-weight: 600; }
+.wx-toast { position: absolute; z-index: 2001; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 76%; width: max-content; padding: 12px 16px; border-radius: 7px; background: #222e; color: #fff; text-align: center; font-size: 14px; pointer-events: none; }
+
+@media (max-width: 460px) {
+  .preview { width: 100%; }
+  .preview-toolbar { min-height: 38px; box-sizing: border-box; padding: 5px 10px; font-size: 11px; }
+  .preview-toolbar button, .preview-controls select { padding-block: 3px; }
+  .phone { --wx-rpx: calc(100vw / 750); height: calc(100dvh - 38px); border-radius: 0; box-shadow: none; }
+}
+
+/* English labels wrap inside the same native layout. */
+#phone[data-language="en"] #wx-title { max-width: calc(100% - 160px); text-align: center; font-size: 14px; line-height: 1.15; }
+#phone[data-language="en"] wx-page { overflow-wrap: break-word; }
+#phone[data-language="en"] wx-page .tab-item { font-size: 12px; padding-inline: 6px; }
+#phone[data-language="en"] wx-page .coach-mode-btn { font-size: 11px; }
+#phone[data-language="en"] wx-page .data-label,
+#phone[data-language="en"] wx-page .asset-label { font-size: 11px; line-height: 1.3; text-align: center; padding-inline: 3px; }
+#phone[data-language="en"] wx-page .quick-schedule-actions { flex-wrap: wrap; gap: 8px; }
+#phone[data-language="en"] wx-page .quick-schedule-actions .sched-btn { flex: 1 1 40%; box-sizing: border-box; margin: 0; font-size: 12px; white-space: normal; }
+#phone[data-language="en"] wx-page .crm-bar-btn { min-width: 0; font-size: 11px; text-align: center; }
+#phone[data-language="en"] wx-page .action-btn,
+#phone[data-language="en"] wx-page .approval-btn { white-space: normal; font-size: 12px; text-align: center; }
+#phone[data-language="en"] wx-page .card-header { flex-wrap: wrap; gap: 10px; }
+#phone[data-language="en"] wx-page .header-actions { flex-wrap: wrap; gap: 12px; }
+#phone[data-language="en"] wx-page .section-title,
+#phone[data-language="en"] wx-page .modal-title { min-width: 0; overflow-wrap: anywhere; }
+#phone[data-language="en"] wx-page .input-label { flex-shrink: 0; width: 40%; max-width: 180px; font-size: 13px; }
+#phone[data-language="en"] wx-page .crm-tag { white-space: normal; font-size: 10px; }
